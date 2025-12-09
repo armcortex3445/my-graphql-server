@@ -27,10 +27,10 @@ export class AuthorsResolver {
   upvotePost(@Args('postId') postId: number) {
     return this.postsService.upvoteById({ id: postId });
   }
-  // @Query('authors')
-  // findAll() {
-  //   return this.authorsService.findAll();
-  // }
+  @Query('authors')
+  findAll() {
+    return this.authorsService.findAll();
+  }
 
   @Query('author')
   getAuthor(@Args('id') id: number) {
