@@ -5,12 +5,15 @@ import {
   Args,
   ResolveField,
   Parent,
+  Subscription,
 } from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
 import { CreateAuthorInput } from './dto/create-author.input';
 import { PostsService } from '../posts/posts.service';
 import { Author } from '../graphql';
+import { PubSub } from 'graphql-subscriptions';
 
+const pubSub = new PubSub();
 @Resolver('Author')
 export class AuthorsResolver {
   constructor(
@@ -41,6 +44,14 @@ export class AuthorsResolver {
   getPosts(@Parent() author: Author) {
     const { id } = author;
     return this.postsService.findMany({ authorId: id });
+  }
+
+  @Subscription('commentAdded', {
+    filter: (payload, variables) =>
+      payload.commentAdded.title === variables.title,
+  })
+  commentAdded() {
+    return pubSub.asyncIterableIterator('commentAdded');
   }
 
   // @Mutation('updateAuthor')
