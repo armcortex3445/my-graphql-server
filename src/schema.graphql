@@ -27,3 +27,12 @@ input CreateAuthorInput {
   firstName: String!
   lastName: String!
 }
+
+type Comment {
+  id: String
+  content: String
+}
+
+type Subscription {
+  commentAdded(title: String!): Comment
+}
