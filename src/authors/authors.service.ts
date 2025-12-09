@@ -1,19 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAuthorInput } from './dto/create-author.input';
 import { UpdateAuthorInput } from './dto/update-author.input';
-
+import { mockAuthors } from '../_mock_/authors';
+import { AuthorEntity } from './entities/author.entity';
 @Injectable()
 export class AuthorsService {
+  private authors: AuthorEntity[] = mockAuthors;
   create(createAuthorInput: CreateAuthorInput) {
     return 'This action adds a new author';
   }
 
   findAll() {
-    return `This action returns all authors`;
+    return this.authors;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} author`;
+    return this.authors.find((author) => author.id === id);
   }
 
   update(id: number, updateAuthorInput: UpdateAuthorInput) {
