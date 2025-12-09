@@ -1,5 +1,6 @@
-export class Post {
+export class PostEntity {
   id: number;
+  title: string;
   authorId: number;
   votes: number;
 }
