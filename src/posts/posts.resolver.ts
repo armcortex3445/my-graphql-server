@@ -12,15 +12,15 @@ export class PostsResolver {
   //   return this.postsService.create(createPostInput);
   // }
 
-  // @Query('posts')
-  // findAll() {
-  //   return this.postsService.findAll();
-  // }
+  @Query('posts')
+  findAll() {
+    return this.postsService.findAll();
+  }
 
-  // @Query('post')
-  // findOne(@Args('id') id: number) {
-  //   return this.postsService.findOne(id);
-  // }
+  @Query('post')
+  findOne(@Args('id') id: number) {
+    return this.postsService.findOne(id);
+  }
 
   // @Mutation('updatePost')
   // update(@Args('updatePostInput') updatePostInput: UpdatePostInput) {
