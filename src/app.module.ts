@@ -17,6 +17,9 @@ import { PostsModule } from './posts/posts.module';
         path: join(process.cwd(), 'src/graphql.ts'),
         outputAs: 'class',
       },
+      subscriptions: {
+        'graphql-ws': true,
+      },
     }),
     AuthorsModule,
     PostsModule,
