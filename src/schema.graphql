@@ -20,6 +20,7 @@ type Query {
   authors: [Author!]!
   post(id: Int!): Post
   posts: [Post!]!
+  invalidPost(id: Int!): Post
 }
 
 type Mutation {
