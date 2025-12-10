@@ -12,6 +12,7 @@ type Post {
   id: Int!
   title: String!
   votes: Int
+  createdAt: DATE
 }
 
 type Query {
