@@ -6,6 +6,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { AuthorsModule } from './authors/authors.module';
 import { PostsModule } from './posts/posts.module';
+import { GraphQLDateTimeISO, GraphQLJSON } from 'graphql-scalars';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { PostsModule } from './posts/posts.module';
       subscriptions: {
         'graphql-ws': true,
       },
+      resolvers: { JSON: GraphQLJSON, DATE: GraphQLDateTimeISO },
     }),
     AuthorsModule,
     PostsModule,
