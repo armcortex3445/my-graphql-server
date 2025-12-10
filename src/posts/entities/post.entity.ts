@@ -3,4 +3,5 @@ export class PostEntity {
   title: string;
   authorId: number;
   votes: number;
+  createdAt: Date;
 }
