@@ -2,6 +2,7 @@ scalar JSON
 scalar DATE
 
 directive @upper on FIELD_DEFINITION
+directive @days(isDays: Boolean = false) on FIELD_DEFINITION
 
 type Author {
   id: Int!
@@ -14,7 +15,7 @@ type Post {
   id: Int!
   title: String! @upper
   votes: Int
-  createdAt: DATE
+  createdAt: DATE @days
 }
 
 type Query {
