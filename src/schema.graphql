@@ -1,6 +1,8 @@
 scalar JSON
 scalar DATE
 
+directive @upper on FIELD_DEFINITION
+
 type Author {
   id: Int!
   firstName: String
@@ -10,7 +12,7 @@ type Author {
 
 type Post {
   id: Int!
-  title: String!
+  title: String! @upper
   votes: Int
   createdAt: DATE
 }
