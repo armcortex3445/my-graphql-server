@@ -4,7 +4,13 @@ scalar DATE
 directive @upper on FIELD_DEFINITION
 directive @days(isDays: Boolean = false) on FIELD_DEFINITION
 
-type Author {
+interface Person {
+  id: Int!
+  firstName: String
+  lastName: String
+}
+
+type Author implements Person {
   id: Int!
   firstName: String
   lastName: String
