@@ -7,7 +7,7 @@ import { join } from 'path';
 import { AuthorsModule } from './authors/authors.module';
 import { PostsModule } from './posts/posts.module';
 import { GraphQLDateTimeISO, GraphQLJSON } from 'graphql-scalars';
-import { upperDirectiveTransformer } from './core/graphql/directives/upper';
+import { directiveTransformerReducer } from './core/graphql/directives';
 
 @Module({
   imports: [
@@ -23,7 +23,7 @@ import { upperDirectiveTransformer } from './core/graphql/directives/upper';
         'graphql-ws': true,
       },
       resolvers: { JSON: GraphQLJSON, DATE: GraphQLDateTimeISO },
-      transformSchema: (schema) => upperDirectiveTransformer(schema, 'upper'),
+      transformSchema: (schema) => directiveTransformerReducer(schema),
     }),
     AuthorsModule,
     PostsModule,
